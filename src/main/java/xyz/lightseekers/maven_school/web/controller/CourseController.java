@@ -37,21 +37,21 @@ public class CourseController {
         return MessageUtil.success(list);
     }
 
-    @GetMapping
+    @GetMapping("/deleteById")
     @ApiOperation(value = "根据id删除")
     public Message deleteById(int id){
         iCourseService.deleteById(id);
         return MessageUtil.success("操作成功");
     }
 
-    @PostMapping
+    @PostMapping("/add")
     @ApiOperation(value = "插入")
     public Message add(Course course){
         iCourseService.insertOrUpdate(course);
         return MessageUtil.success(course);
     }
 
-    @PostMapping
+    @PostMapping("/update")
     @ApiOperation(value = "更新")
     public Message update(Course course){
         iCourseService.insertOrUpdate(course);
