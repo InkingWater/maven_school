@@ -2,9 +2,11 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Questionnaire;
 import xyz.lightseekers.maven_school.bean.QuestionnaireExample;
 
+@Repository
 public interface QuestionnaireMapper {
     long countByExample(QuestionnaireExample example);
 

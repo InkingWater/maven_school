@@ -11,5 +11,5 @@ import xyz.lightseekers.maven_school.bean.ex.RegionEX;
  */
 @Repository
 public interface RegionEXMapper {
-    RegionEX selectLast();
+    RegionEX selectLast() throws RuntimeException;
 }

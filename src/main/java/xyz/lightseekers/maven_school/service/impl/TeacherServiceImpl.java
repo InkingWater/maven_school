@@ -70,7 +70,8 @@ public class TeacherServiceImpl implements ITeacherService {
             word = "%" + word + "%";
             return teacherEXMapper.selectGender(word);
         } else {
-            return null;
+            word = "%" + word + "%";
+            return teacherEXMapper.selectGender(word);
         }
     }
 }
