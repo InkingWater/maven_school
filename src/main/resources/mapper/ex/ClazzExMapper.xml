@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.ClazzExMapper">
+    <resultMap id="clazzMapper" type="xyz.lightseekers.maven_school.bean.ex.ClazzEx">
+        <id property="id" column="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="serve_number" jdbcType="INTEGER" property="serveNumber" />
+        <result column="student_number" jdbcType="INTEGER" property="studentNumber" />
+        <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+        <result column="description" jdbcType="LONGVARCHAR" property="description" />
+        <association property="teacher" column="teacher_id" select="selectTeacher" />
+        <association property="department" column="department_id" select="selectDepartment"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="clazzMapper" >
+        select * from briup_clazz
+    </select>
+
+    <select id="selectTeacher" resultType="xyz.lightseekers.maven_school.bean.Teacher">
+        select * from briup_teacher where id = #{teacher_id}
+    </select>
+
+    <select id="selectDepartment" resultType="xyz.lightseekers.maven_school.bean.Department">
+        select * from briup_department where id =#{department_id}
+    </select>
+
+    <select id="findById" resultMap="clazzMapper" >
+        select * from briup_clazz where id = #{id}
+    </select>
+    
+    <select id="findByName" resultMap="clazzMapper">
+        select * from briup_clazz where briup_clazz.name like #{word}
+    </select>
+
+    <select id="findByNameOrTeacher" resultMap="clazzMapper">
+        select c.id ,c.name,c.description,c.serve_number,c.student_number,c.department_id,c.teacher_id,t.id tid,
+        t.name tname from briup_clazz c,briup_teacher t where c.teacher_id = t.id
+        and (t.name like #{word} or c.name like #{word})
+    </select>
+
+    <select id="findByTeacher" resultMap="clazzMapper">
+        select c.id ,c.name,c.description,c.serve_number,c.student_number,c.department_id,c.teacher_id,t.id tid,
+        t.name tname from briup_clazz c,briup_teacher t where c.teacher_id = t.id
+        and t.name like #{word}
+    </select>
+    
+</mapper>

@@ -281,7 +281,8 @@
       serve_number = #{serveNumber,jdbcType=INTEGER},
       student_number = #{studentNumber,jdbcType=INTEGER},
       department_id = #{departmentId,jdbcType=INTEGER},
-      teacher_id = #{teacherId,jdbcType=INTEGER}
+      teacher_id = #{teacherId,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
