@@ -4,7 +4,7 @@ import xyz.lightseekers.maven_school.bean.Course;
 
 import java.util.List;
 
-public interface CourseMapperEX {
+public interface CourseEXMapper {
 
 
     List<Course> selectNameOrDescription(String word) throws RuntimeException;

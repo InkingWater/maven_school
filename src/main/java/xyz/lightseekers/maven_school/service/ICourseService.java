@@ -12,4 +12,6 @@ public interface ICourseService {
 
     String insertOrUpdate(Course course) throws RuntimeException;
     String deleteById(int id);
+
+    String deleteBatch(int[] ints)throws RuntimeException;
 }
