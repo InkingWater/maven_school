@@ -1,5 +1,7 @@
 package xyz.lightseekers.maven_school.service;
 
+import xyz.lightseekers.maven_school.bean.ex.RegionEX;
+
 /**
  * @Author: ZhiliangJia
  * @Description:
@@ -7,4 +9,5 @@ package xyz.lightseekers.maven_school.service;
  * @Modified User:
  */
 public interface IRegionService {
+    RegionEX selectLast();
 }

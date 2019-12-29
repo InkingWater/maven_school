@@ -2,9 +2,11 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Region;
 import xyz.lightseekers.maven_school.bean.RegionExample;
 
+@Repository
 public interface RegionMapper {
     long countByExample(RegionExample example);
 

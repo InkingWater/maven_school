@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.RegionEXMapper">
+    <resultMap id="regionResult" type="xyz.lightseekers.maven_school.bean.ex.RegionEX">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="telepone" jdbcType="VARCHAR" property="telepone" />
+        <result column="copyright" jdbcType="VARCHAR" property="copyright" />
+    </resultMap>
+    <select id="selectLast" resultType="xyz.lightseekers.maven_school.bean.ex.RegionEX">
+        select * from db_school_web.briup_region r1 where id in (select max(r2.id) from db_school_web.briup_region r2)
+    </select>
+</mapper>
