@@ -1,8 +1,9 @@
 package xyz.lightseekers.maven_school.bean.ex;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TeacherEX {
+public class TeacherEX implements Serializable {
     private Integer id;
 
     private String name;
