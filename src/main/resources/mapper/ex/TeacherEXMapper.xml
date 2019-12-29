@@ -2,17 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--只有单表查询-->
 <mapper namespace="xyz.lightseekers.maven_school.mapper.ex.TeacherEXMapper">
-<<<<<<< HEAD
     <select id="selectByGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
-=======
+        select * from briup_teacher where gender like #{word}
+    </select>
     <select id="selectGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
->>>>>>> 527ca5b3da91683be11ecfd28861b581bb574582
         select * from briup_teacher where gender like #{word}
     </select>
     <select id="selectAll" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
         select * from briup_teacher
-    </select>
-    <select id="selectGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
-        select * from briup_teacher where gender like #{word}
     </select>
 </mapper>
