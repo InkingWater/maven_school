@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Course;
 import xyz.lightseekers.maven_school.bean.CourseExample;
-import xyz.lightseekers.maven_school.bean.Region;
 import xyz.lightseekers.maven_school.mapper.CourseMapper;
 import xyz.lightseekers.maven_school.mapper.ex.CourseMapperEX;
 import xyz.lightseekers.maven_school.service.ICourseService;

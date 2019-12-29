@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.DepartmentEXMapper">
+    <resultMap id="abn" type="xyz.lightseekers.maven_school.bean.ex.DepartmentEX">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="description" property="description"></result>
+        <association property="regIon" column="region_id" select="selectRegion"></association>
+    </resultMap>
+    
+    <select id="findAll" resultMap="abn">
+        select * from briup_department
+    </select>
+
+    <select id="selectName" resultMap="abn">
+         select * from briup_dapartment where name like #{word}
+    </select>
+
+    <select id="selectDep" resultMap="abn">
+         select * from briup_dapartment where dep like #{word}
+    </select>
+
+    <select id="selectNameOrDep" resultMap="abn">
+         select * from briup_dapartment where name like #{word} or dep like #{word}
+    </select>
+
+    <select id="selectRegion" resultType="xyz.lightseekers.maven_school.bean.Region">
+        select * from briup_region where id = #{id}
+    </select>
+</mapper>

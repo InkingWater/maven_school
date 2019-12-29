@@ -1,6 +1,8 @@
 package xyz.lightseekers.maven_school.bean.ex;
 
-public class CourseEX {
+import java.io.Serializable;
+
+public class CourseEX implements Serializable {
 
     private Integer id;
 
