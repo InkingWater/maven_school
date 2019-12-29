@@ -15,7 +15,7 @@ import xyz.lightseekers.maven_school.util.DaoUtil;
  * @Date:Create in 10:12 2019/12/29
  * @Modified User:
  */
-@Service
+@Service("regionService")
 public class RegionServiceImpl implements IRegionService {
 
     @Autowired

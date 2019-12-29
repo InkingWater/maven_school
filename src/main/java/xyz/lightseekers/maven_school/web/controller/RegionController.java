@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import xyz.lightseekers.maven_school.util.MessageUtil;
 @Api(description = "学校控制器类")
 public class RegionController {
     @Autowired
+    @Qualifier(value = "regionService")
     private IRegionService regionService;
 
     @GetMapping(value = "selectLast")
