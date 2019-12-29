@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@Api(description = "班级管理")
 @RequestMapping("clazz")
+@Api(description = "班级管理")
 public class ClazzController {
 
     @Autowired

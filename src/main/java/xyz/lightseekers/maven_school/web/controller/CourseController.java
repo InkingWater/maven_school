@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/course")
+@Api(value = "课程管理")
 public class CourseController {
 
 

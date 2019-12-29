@@ -23,7 +23,7 @@ import xyz.lightseekers.maven_school.util.MessageUtil;
  */
 @RestController
 @RequestMapping(value = "region")
-@Api(description = "学校控制器类")
+@Api(description = "学校管理")
 public class RegionController {
     @Autowired
     @Qualifier(value = "regionService")
