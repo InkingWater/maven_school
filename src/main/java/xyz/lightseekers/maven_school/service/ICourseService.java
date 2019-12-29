@@ -1,7 +1,6 @@
 package xyz.lightseekers.maven_school.service;
 
 import xyz.lightseekers.maven_school.bean.Course;
-import xyz.lightseekers.maven_school.bean.Region;
 
 import java.util.List;
 

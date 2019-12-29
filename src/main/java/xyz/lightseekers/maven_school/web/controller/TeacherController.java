@@ -85,7 +85,12 @@ public class TeacherController {
         return MessageUtil.success(list);
     }
 
-    //搜索框
+    /**
+     * 搜索框
+     * @param key 下拉栏的内容
+     * @param word 输入框的内容
+     * @return
+     */
     @GetMapping("/search")
     @ApiOperation(value = "搜索框")
     @ApiImplicitParams({

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.ex.TeacherEX;
 
 import java.util.List;
+
 @Repository
 public interface TeacherEXMapper {
     //搜索栏 空+不空

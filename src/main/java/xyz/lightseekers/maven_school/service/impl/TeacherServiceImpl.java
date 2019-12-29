@@ -68,6 +68,7 @@ public class TeacherServiceImpl implements ITeacherService {
         else if ((key == null || "".equals(key)) && (!"".equals(word))) {
             //模糊查询，%为通配符，代表任意数量的字符
             word = "%" + word + "%";
+<<<<<<< HEAD
             return teacherEXMapper.selectByGender(word);
         } else if("gender".equals(key)){
             if (word == null || "".equals(word)){
@@ -80,6 +81,12 @@ public class TeacherServiceImpl implements ITeacherService {
         }
         else {
             return null;
+=======
+            return teacherEXMapper.selectGender(word);
+        } else {
+            word = "%" + word + "%";
+            return teacherEXMapper.selectGender(word);
+>>>>>>> 527ca5b3da91683be11ecfd28861b581bb574582
         }
     }
 }

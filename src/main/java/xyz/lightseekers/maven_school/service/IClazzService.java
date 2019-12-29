@@ -2,7 +2,6 @@ package xyz.lightseekers.maven_school.service;
 
 import xyz.lightseekers.maven_school.bean.Clazz;
 import xyz.lightseekers.maven_school.bean.ex.ClazzEx;
-import xyz.lightseekers.maven_school.util.Message;
 
 import java.util.List;
 

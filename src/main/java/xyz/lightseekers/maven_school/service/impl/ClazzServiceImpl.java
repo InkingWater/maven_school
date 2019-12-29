@@ -3,7 +3,6 @@ package xyz.lightseekers.maven_school.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Clazz;
-import xyz.lightseekers.maven_school.bean.ClazzExample;
 import xyz.lightseekers.maven_school.bean.ex.ClazzEx;
 import xyz.lightseekers.maven_school.mapper.ClazzMapper;
 import xyz.lightseekers.maven_school.mapper.ex.ClazzExMapper;

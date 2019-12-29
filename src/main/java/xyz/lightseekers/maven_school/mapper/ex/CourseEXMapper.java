@@ -1,9 +1,11 @@
 package xyz.lightseekers.maven_school.mapper.ex;
 
+import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Course;
 
 import java.util.List;
 
+@Repository
 public interface CourseEXMapper {
 
 

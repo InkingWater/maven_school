@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xyz.lightseekers.maven_school.bean.Department;
-
 import xyz.lightseekers.maven_school.bean.ex.DepartmentEX;
 import xyz.lightseekers.maven_school.mapper.DepartmentMapper;
 import xyz.lightseekers.maven_school.mapper.ex.DepartmentEXMapper;

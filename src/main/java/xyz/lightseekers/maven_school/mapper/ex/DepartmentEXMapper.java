@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface DepartmentEXMapper {
-    List<DepartmentEX> findAll();
-    List<DepartmentEX> selectnameOrdep(String word);
-    List<DepartmentEX> selectname(String word);
-    List<DepartmentEX> selectdep(String word);
+    List<DepartmentEX> findAll() throws RuntimeException;
+    List<DepartmentEX> selectnameOrdep(String word) throws RuntimeException;
+    List<DepartmentEX> selectname(String word) throws RuntimeException;
+    List<DepartmentEX> selectdep(String word) throws RuntimeException;
 
 }
