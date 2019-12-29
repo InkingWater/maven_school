@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/department")
-@Api(description="年级管理控制器")
+@Api(description="年级管理")
 public class DepartmentController {
     @Autowired
     private IDepartmentService departmentService;
