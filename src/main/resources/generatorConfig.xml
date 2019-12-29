@@ -59,6 +59,7 @@
 		<table tableName="briup_options" domainObjectName="Options"></table>
 		<table tableName="briup_qqn" domainObjectName="Qqn"></table>
 		<table tableName="briup_question" domainObjectName="Question"></table>
+		<table tableName="briup_questionnaire" domainObjectName="Questionnaire"></table>
 		<table tableName="briup_region" domainObjectName="Region"></table>
 		<table tableName="briup_survey" domainObjectName="Survey"></table>
 		<table tableName="briup_teacher" domainObjectName="Teacher"></table>

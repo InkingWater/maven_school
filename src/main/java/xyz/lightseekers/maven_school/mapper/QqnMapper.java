@@ -2,11 +2,9 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Qqn;
 import xyz.lightseekers.maven_school.bean.QqnExample;
 
-@Repository
 public interface QqnMapper {
     long countByExample(QqnExample example);
 

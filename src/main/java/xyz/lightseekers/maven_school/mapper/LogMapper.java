@@ -2,11 +2,9 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Log;
 import xyz.lightseekers.maven_school.bean.LogExample;
 
-@Repository
 public interface LogMapper {
     long countByExample(LogExample example);
 

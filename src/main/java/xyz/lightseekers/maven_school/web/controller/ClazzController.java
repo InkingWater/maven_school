@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.lightseekers.maven_school.bean.Clazz;
-import xyz.lightseekers.maven_school.mapper.ex.ClazzExMapper;
 import xyz.lightseekers.maven_school.service.IClazzService;
 import xyz.lightseekers.maven_school.util.Message;
 import xyz.lightseekers.maven_school.util.MessageUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("clazz")
@@ -62,9 +58,4 @@ public class ClazzController {
     public Message findByNameOrTeacher(String key,String word){
         return MessageUtil.success(clazzService.findByCondi(key,word));
     }
-
-
-
-
-
 }

@@ -2,11 +2,9 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Options;
 import xyz.lightseekers.maven_school.bean.OptionsExample;
 
-@Repository
 public interface OptionsMapper {
     long countByExample(OptionsExample example);
 

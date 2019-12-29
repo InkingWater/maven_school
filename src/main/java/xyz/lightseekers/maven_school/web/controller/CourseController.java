@@ -15,7 +15,7 @@ import xyz.lightseekers.maven_school.util.MessageUtil;
 import java.util.List;
 
 @RestController
-@RequestMapping("/课程管理")
+@RequestMapping("/course")
 @Api(description = "课程管理")
 public class CourseController {
 

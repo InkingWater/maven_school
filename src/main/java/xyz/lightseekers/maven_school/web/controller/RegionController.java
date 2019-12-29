@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xyz.lightseekers.maven_school.bean.Region;
-import xyz.lightseekers.maven_school.mapper.ex.RegionEXMapper;
 import xyz.lightseekers.maven_school.service.IRegionService;
 import xyz.lightseekers.maven_school.util.Message;
 import xyz.lightseekers.maven_school.util.MessageUtil;

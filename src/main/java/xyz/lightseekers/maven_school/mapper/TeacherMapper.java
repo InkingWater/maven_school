@@ -2,11 +2,9 @@ package xyz.lightseekers.maven_school.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.Teacher;
 import xyz.lightseekers.maven_school.bean.TeacherExample;
 
-@Repository
 public interface TeacherMapper {
     long countByExample(TeacherExample example);
 
@@ -29,7 +27,4 @@ public interface TeacherMapper {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
-
-
-
 }
