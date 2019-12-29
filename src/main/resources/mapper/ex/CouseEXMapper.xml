@@ -9,7 +9,7 @@
     <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="xyz.lightseekers.maven_school.bean.Course">
         <result column="description" jdbcType="LONGVARCHAR" property="description" />
     </resultMap>
-    
+
     <select id="selectNameOrDescription" resultMap="ResultMapWithBLOBs">
         select * from briup_course where name like #{word} or description like #{word}
     </select>

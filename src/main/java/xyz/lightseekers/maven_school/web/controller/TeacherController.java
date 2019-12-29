@@ -108,7 +108,6 @@ public class TeacherController {
     }
 
 
-
 //    //以String的形式进行多项删除
 //    @GetMapping("/deleteBatch")
 //    public Message deleteBatch(String ids) {

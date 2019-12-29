@@ -1,16 +1,19 @@
 package xyz.lightseekers.maven_school.bean.ex;
 
+import xyz.lightseekers.maven_school.bean.Region;
+
 import java.io.Serializable;
 
-public class CourseEX implements Serializable {
-
+public class DepartmentEX implements Serializable {
     private Integer id;
 
     private String name;
 
-    private Integer period;
+    private Integer region;
 
     private String description;
+
+    private Region regIon;
 
     public Integer getId() {
         return id;
@@ -28,12 +31,12 @@ public class CourseEX implements Serializable {
         this.name = name;
     }
 
-    public Integer getPeriod() {
-        return period;
+    public Integer getRegion() {
+        return region;
     }
 
-    public void setPeriod(Integer period) {
-        this.period = period;
+    public void setRegion(Integer region) {
+        this.region = region;
     }
 
     public String getDescription() {
@@ -42,5 +45,13 @@ public class CourseEX implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Region getRegIon() {
+        return regIon;
+    }
+
+    public void setRegIon(Region regIon) {
+        this.regIon = regIon;
     }
 }

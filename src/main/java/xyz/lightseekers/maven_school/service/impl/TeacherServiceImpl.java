@@ -20,7 +20,7 @@ public class TeacherServiceImpl implements ITeacherService {
     @Autowired
     private TeacherEXMapper teacherEXMapper;
 
-    //添加或者删除
+    //添加或者修改
     @Override
     public void saveOrUpdate(Teacher teacher) throws RuntimeException {
         //如果传入的参数是空值，则抛出一个异常
@@ -65,13 +65,11 @@ public class TeacherServiceImpl implements ITeacherService {
             return teacherEXMapper.selectAll();
         }
         //下拉栏为空，输入框不为空
-        else if ((key==null||"".equals(key))&&(!"".equals(word))){
+        else if ((key == null || "".equals(key)) && (!"".equals(word))) {
             //模糊查询，%为通配符，代表任意数量的字符
-            word = "%" +word +"%";
-            TeacherExample teacherExample = new TeacherExample();
+            word = "%" + word + "%";
             return teacherEXMapper.selectGender(word);
-        }
-        else{
+        } else {
             return null;
         }
     }
