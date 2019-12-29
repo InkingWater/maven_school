@@ -88,6 +88,10 @@ public class TeacherController {
     //搜索框
     @GetMapping("/search")
     @ApiOperation(value = "搜索框")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "key", value = "下拉栏", paramType = "query", dataType = "String"),
+            @ApiImplicitParam(name = "word", value = "输入框", paramType = "query", dataType = "String")
+    })
     public Message search(String key, String word) {
         List<TeacherEX> list = iTeacherService.search(key, word);
         return MessageUtil.success(list);
@@ -96,10 +100,6 @@ public class TeacherController {
     //以数据组的形式进行多项删除
     @GetMapping("/deleteBatch")
     @ApiOperation(value = "多个删除")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "key", value = "下拉栏", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "word", value = "输入框", paramType = "query", dataType = "String")
-    })
     public Message deleteBatch(int ids[]) {
         for (int id : ids) {
             iTeacherService.deleteById(id);
