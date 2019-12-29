@@ -1,5 +1,6 @@
 package xyz.lightseekers.maven_school.service;
 
+import xyz.lightseekers.maven_school.bean.Region;
 import xyz.lightseekers.maven_school.bean.ex.RegionEX;
 
 /**
@@ -9,5 +10,9 @@ import xyz.lightseekers.maven_school.bean.ex.RegionEX;
  * @Modified User:
  */
 public interface IRegionService {
-    RegionEX selectLast();
+    RegionEX selectLast() throws RuntimeException;
+
+    String insertOrUpdate(Region region) throws RuntimeException;
+
+    String deleteById(int id);
 }
