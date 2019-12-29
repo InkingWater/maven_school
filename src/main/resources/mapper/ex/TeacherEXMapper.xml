@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--只有单表查询-->
-<mapper namespace="com.xyz.lightseekers.maven_school.mapper.ex.TeacherEXMapper">
-    <select id="selectGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.TeacherEXMapper">
+    <select id="selectByGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
         select * from briup_teacher where gender like #{word}
     </select>
     <select id="selectAll" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
         select * from briup_teacher
+    </select>
+    <select id="selectGender" resultType="xyz.lightseekers.maven_school.bean.ex.TeacherEX">
+        select * from briup_teacher where gender like #{word}
     </select>
 </mapper>
