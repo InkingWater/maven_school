@@ -13,7 +13,7 @@
     <select id="selectNameOrDescription" resultMap="ResultMapWithBLOBs">
         select * from briup_course where name like #{word} or description like #{word}
     </select>
-pu
+
     <select id="selectName" resultMap="ResultMapWithBLOBs">
         select * from briup_course where name like #{word}
     </select>
