@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Teacher;
 import xyz.lightseekers.maven_school.bean.TeacherExample;
+import xyz.lightseekers.maven_school.bean.ex.TeacherEX;
 import xyz.lightseekers.maven_school.mapper.TeacherMapper;
 import xyz.lightseekers.maven_school.mapper.ex.TeacherEXMapper;
 import xyz.lightseekers.maven_school.service.ITeacherService;
@@ -56,19 +57,22 @@ public class TeacherServiceImpl implements ITeacherService {
         return list;
     }
 
-    //搜索栏
+    //搜索栏----------下拉栏key只设置了gender性别，word只有男or女两个值
     @Override
-    public List<Teacher> search(String key, String word) throws RuntimeException {
+    public List<TeacherEX> search(String key, String word) throws RuntimeException {
         //下拉栏为空，输入框为空
         if ((key == null || "".equals(key)) && (word == null || "".equals(word))) {
-            return findAll();
+            return teacherEXMapper.selectAll();
         }
-        //输入框为空，下拉栏不为空
+        //下拉栏为空，输入框不为空
         else if ((key==null||"".equals(key))&&(!"".equals(word))){
             //模糊查询，%为通配符，代表任意数量的字符
             word = "%" +word +"%";
+            TeacherExample teacherExample = new TeacherExample();
             return teacherEXMapper.selectGender(word);
         }
-        return;
+        else{
+            return null;
+        }
     }
 }
