@@ -57,6 +57,11 @@ public class QuestionnaireController {
         return MessageUtil.success();
     }
 
+    /**
+     * 批量删除
+     * @param id
+     * @return
+     */
     @ApiOperation("批量删除")
     @GetMapping("/deleteM")
     public Message deleteM(int id[])
