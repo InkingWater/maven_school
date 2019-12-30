@@ -35,7 +35,7 @@ public class QuestionnaireController {
     @GetMapping("/del")
     public Message del(int id)
     {
-        questionnaireService.deleteS(id);
+       // questionnaireService.deleteS(id);
         questionnaireService.deleteByid(id);
         return MessageUtil.success();
     }

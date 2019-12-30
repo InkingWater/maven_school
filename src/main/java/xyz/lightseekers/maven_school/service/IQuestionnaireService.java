@@ -15,5 +15,7 @@ public interface IQuestionnaireService {
 
     void deleteS(int id) throws RuntimeException;
 
+    void deleteByQqn(int id) throws RuntimeException;
+
 
 }

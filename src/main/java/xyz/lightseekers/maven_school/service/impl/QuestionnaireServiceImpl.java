@@ -2,8 +2,10 @@ package xyz.lightseekers.maven_school.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xyz.lightseekers.maven_school.bean.QqnExample;
 import xyz.lightseekers.maven_school.bean.Questionnaire;
 import xyz.lightseekers.maven_school.bean.QuestionnaireExample;
+import xyz.lightseekers.maven_school.mapper.QqnMapper;
 import xyz.lightseekers.maven_school.mapper.QuestionnaireMapper;
 import xyz.lightseekers.maven_school.mapper.ex.QuestionnaireEXMapper;
 import xyz.lightseekers.maven_school.service.IQuestionnaireService;
@@ -17,6 +19,8 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     private QuestionnaireMapper questionnaireMapper;
     @Autowired
     private QuestionnaireEXMapper questionnaireEXMapper;
+    @Autowired
+    private QqnMapper qqnMapper;
 
     @Override
     public List<Questionnaire> findAll() throws RuntimeException {
@@ -39,12 +43,15 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
     @Override
     public void deleteByid(int id) throws RuntimeException {
+        questionnaireEXMapper.deletes(id);
         questionnaireMapper.deleteByPrimaryKey(id);
+        deleteByQqn(id);
     }
 
     @Override
     public String deleteM(int[] id) throws RuntimeException {
         for (int i=0;i<id.length;i++){
+            deleteByQqn(id[i]);
             deleteS(id[i]);
             deleteByid(id[i]);
         }
@@ -56,6 +63,12 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         questionnaireEXMapper.deletes(id);
     }
 
+    @Override
+    public void deleteByQqn(int id) throws RuntimeException {
+        QqnExample qqn=new QqnExample();
+        qqn.createCriteria().andQuestionnaireIdEqualTo(id);
+        qqnMapper.deleteByExample(qqn);
+    }
 
 
 }
