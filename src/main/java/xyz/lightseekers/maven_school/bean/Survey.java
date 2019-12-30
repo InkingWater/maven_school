@@ -1,15 +1,19 @@
 package xyz.lightseekers.maven_school.bean;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiParam;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@ApiModel
 public class Survey implements Serializable {
     private Integer id;
 
     private String status;
-
+    @ApiParam(hidden = true)
     private Integer code;
-
+    @ApiParam(hidden = true)
     private Date surveyday;
 
     private Integer departmentId;
@@ -21,7 +25,7 @@ public class Survey implements Serializable {
     private Integer userId;
 
     private Integer questionnaireId;
-
+    @ApiParam(hidden = true)
     private Double average;
 
     private static final long serialVersionUID = 1L;
