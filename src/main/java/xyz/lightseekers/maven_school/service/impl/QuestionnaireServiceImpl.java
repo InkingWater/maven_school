@@ -51,26 +51,51 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
     @Override
     public String addOrUpdate(Questionnaire questionnaire, int ids[]) throws RuntimeException {
-            if(questionnaire.getId()==null){
-                questionnaire.setDate(new Date());
-                questionnaireEXMapper.insert(questionnaire);
-                for (int i=0;i<ids.length;i++)
-                    questionnaireEXMapper.insertIntoQqn(ids[i],questionnaire.getId());
-                return DaoUtil.messageString(1+ids.length,DaoUtil.INSERT);
-            }else{
-                questionnaire.setDate(new Date());
-                questionnaireMapper.updateByPrimaryKey(questionnaire);
-                QqnExample qqnExample =new QqnExample();
-                qqnExample.createCriteria().andQuestionnaireIdEqualTo(questionnaire.getId());
-                qqnMapper.deleteByExample(qqnExample);
-                for (int i=0;i<ids.length;i++)
-                    questionnaireEXMapper.insertIntoQqn(ids[i],questionnaire.getId());
+        if(questionnaire.getId()==null){
+            questionnaire.setDate(new Date());
+            questionnaireEXMapper.insert(questionnaire);
+            for (int i=0;i<ids.length;i++)
+                questionnaireEXMapper.insertIntoQqn(ids[i],questionnaire.getId());
+            return DaoUtil.messageString(1+ids.length,DaoUtil.INSERT);
+        }else{
+            questionnaire.setDate(new Date());
+            questionnaireMapper.updateByPrimaryKey(questionnaire);
+            QqnExample qqnExample =new QqnExample();
+            qqnExample.createCriteria().andQuestionnaireIdEqualTo(questionnaire.getId());
+            qqnMapper.deleteByExample(qqnExample);
+            for (int i=0;i<ids.length;i++)
+                questionnaireEXMapper.insertIntoQqn(ids[i],questionnaire.getId());
 
-                return DaoUtil.messageString(1+ids.length,DaoUtil.UPDATE);
-            }
+            return DaoUtil.messageString(1+ids.length,DaoUtil.UPDATE);
+        }
+    }
+    @Override
+    public void deleteByid(int id) throws RuntimeException {
+        questionnaireEXMapper.deletes(id);
+        questionnaireMapper.deleteByPrimaryKey(id);
+        deleteByQqn(id);
+    }
 
+    @Override
+    public String deleteM(int[] id) throws RuntimeException {
+        for (int i=0;i<id.length;i++){
+            deleteByQqn(id[i]);
+            deleteS(id[i]);
+            deleteByid(id[i]);
+        }
+        return DaoUtil.messageString(id.length,DaoUtil.DELETE);
+    }
 
+    @Override
+    public void deleteS(int id) throws RuntimeException {
+        questionnaireEXMapper.deletes(id);
+    }
 
+    @Override
+    public void deleteByQqn(int id) throws RuntimeException {
+        QqnExample qqn=new QqnExample();
+        qqn.createCriteria().andQuestionnaireIdEqualTo(id);
+        qqnMapper.deleteByExample(qqn);
     }
 
 

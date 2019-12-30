@@ -12,4 +12,12 @@ public interface IQuestionnaireService {
     QuestionnaireEX findAQuestionnaire(int id) throws RuntimeException;
     String addOrUpdate(Questionnaire questionnaire,int ids[]) throws RuntimeException;
 
+    void deleteByid(int id) throws RuntimeException;
+
+    String deleteM(int id[]) throws RuntimeException;
+
+    void deleteS(int id) throws RuntimeException;
+
+    void deleteByQqn(int id) throws RuntimeException;
+
 }
