@@ -63,5 +63,6 @@
 		<table tableName="briup_region" domainObjectName="Region"></table>
 		<table tableName="briup_survey" domainObjectName="Survey"></table>
 		<table tableName="briup_teacher" domainObjectName="Teacher"></table>
+
 	</context>
 </generatorConfiguration>
