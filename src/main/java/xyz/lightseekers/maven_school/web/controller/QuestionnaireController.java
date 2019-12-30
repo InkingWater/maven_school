@@ -48,6 +48,11 @@ public class QuestionnaireController {
         return MessageUtil.success(questionnaireService.addOrUpdate(questionnaire, ids));
     }
 
+    /**
+     * 根据Id删除
+     * @param id
+     * @return
+     */
     @ApiOperation(("根据Id删除"))
     @GetMapping("/del")
     public Message del(int id)
