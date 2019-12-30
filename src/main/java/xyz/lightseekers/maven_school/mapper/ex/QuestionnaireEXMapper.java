@@ -15,4 +15,6 @@ import java.util.List;
 @Repository
 public interface QuestionnaireEXMapper {
     List<Questionnaire> search(String word) throws RuntimeException;
+
+    void deletes(int id) throws RuntimeException;
 }

@@ -7,6 +7,7 @@ import xyz.lightseekers.maven_school.bean.QuestionnaireExample;
 import xyz.lightseekers.maven_school.mapper.QuestionnaireMapper;
 import xyz.lightseekers.maven_school.mapper.ex.QuestionnaireEXMapper;
 import xyz.lightseekers.maven_school.service.IQuestionnaireService;
+import xyz.lightseekers.maven_school.util.DaoUtil;
 
 import java.util.List;
 @Service
@@ -35,4 +36,26 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
             return questionnaireEXMapper.search(word);
         }
     }
+
+    @Override
+    public void deleteByid(int id) throws RuntimeException {
+        questionnaireMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public String deleteM(int[] id) throws RuntimeException {
+        for (int i=0;i<id.length;i++){
+            deleteS(id[i]);
+            deleteByid(id[i]);
+        }
+        return DaoUtil.messageString(id.length,DaoUtil.DELETE);
+    }
+
+    @Override
+    public void deleteS(int id) throws RuntimeException {
+        questionnaireEXMapper.deletes(id);
+    }
+
+
+
 }
