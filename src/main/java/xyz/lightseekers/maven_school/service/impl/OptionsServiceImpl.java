@@ -11,7 +11,7 @@ public class OptionsServiceImpl implements IOptionsService {
     private OptionsMapper optionsMapper;
 
     @Override
-    public void addOptions(Options options) throws RuntimeException {
-        optionsMapper.insert(options);
+    public void updateOption(Options options) throws RuntimeException {
+        optionsMapper.updateByPrimaryKey(options);
     }
 }

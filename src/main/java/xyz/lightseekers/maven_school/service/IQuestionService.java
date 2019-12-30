@@ -24,9 +24,16 @@ public interface IQuestionService {
     List<QuestionEX> selectAll() throws RuntimeException;
 
     //对题目表插入一条数据
-    void insertQuestion(Question question,List<Options> list) throws RuntimeException;
+    void insertQuestion(Question question, List<Options> list) throws RuntimeException;
 
     //级联删除----删除题目
     void deleteById(int id) throws RuntimeException;
-    //批量删除
+
+    //修改题目
+    void updateById(Question question) throws RuntimeException;
+
+
+    //未实现或无法实现
+//    //【未实现】修改题目+修改选项+修改
+//    void updateQuestionPlus(Question question,List<Options> options)throws RuntimeException;
 }
