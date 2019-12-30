@@ -65,7 +65,6 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
                 qqnMapper.deleteByExample(qqnExample);
                 for (int i=0;i<ids.length;i++)
                     questionnaireEXMapper.insertIntoQqn(ids[i],questionnaire.getId());
-
                 return DaoUtil.messageString(1+ids.length,DaoUtil.UPDATE);
             }
 
