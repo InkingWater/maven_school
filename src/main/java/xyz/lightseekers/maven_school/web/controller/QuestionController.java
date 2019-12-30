@@ -21,7 +21,9 @@ import xyz.lightseekers.maven_school.util.MessageUtil;
 @RequestMapping(value = "question")
 @Api(description = "题目管理")
 public class QuestionController {
-
+    /**
+     * 尝试更新
+     */
     @Autowired
     private IQuestionService questionService;
 
