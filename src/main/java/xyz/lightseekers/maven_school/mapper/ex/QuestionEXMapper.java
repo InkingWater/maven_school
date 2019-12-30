@@ -15,8 +15,8 @@ import java.util.List;
 @Repository
 public interface QuestionEXMapper {
     QuestionEX selectById(int id) throws RuntimeException;
-    //修改内容
-
+    //搜索栏
+    List<QuestionEX> selectByName(String word)throws RuntimeException;
     //添加全部查找方法
     List<QuestionEX> selectAll() throws RuntimeException;
     //添加数据

@@ -32,8 +32,9 @@ public interface IQuestionService {
     //修改题目
     void updateById(Question question) throws RuntimeException;
 
-
     //未实现或无法实现
 //    //【未实现】修改题目+修改选项+修改
 //    void updateQuestionPlus(Question question,List<Options> options)throws RuntimeException;
+    //    //搜索栏
+//    List<QuestionEX> search(String word)throws RuntimeException;
 }

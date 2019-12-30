@@ -110,8 +110,7 @@ public class QuestionController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "题目编号", paramType = "query", dataType = "int"),
             @ApiImplicitParam(name = "name", value = "题目编号", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "type", value = "题目类型", paramType = "query", dataType = "String"),
-            @ApiImplicitParam(name = "list", value = "选项集合", paramType = "body", dataType = "Example Value")
+            @ApiImplicitParam(name = "type", value = "题目类型", paramType = "query", dataType = "String")
     })
     public Message addQuestion(Question question, @RequestBody List<Options> list) {
         questionService.insertQuestion(question, list);
