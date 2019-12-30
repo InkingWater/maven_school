@@ -33,15 +33,15 @@ public class DepartmentServiceImpl implements IDepartmentService {
         }else if((key==null||"".equals(key))&&!"".equals(word))
         {//前者为空 后者不为空
             word="%"+word+"%";
-            return  departmentEXMapper.selectnameOrdep(word);
+            return  departmentEXMapper.selectNameOrDep(word);
         }else if("name".equals(key))
         {
             word="%"+word+"%";
-            return   departmentEXMapper.selectname(word);
+            return   departmentEXMapper.selectName(word);
         }else if("dep".equals(key))
         {
             word="%"+word+"%";
-            return  departmentEXMapper.selectdep(word);
+            return  departmentEXMapper.selectDep(word);
         }
         return null;
     }

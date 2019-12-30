@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.QuestionEXMapper">
+    <resultMap id="questionResult" type="xyz.lightseekers.maven_school.bean.ex.QuestionEX">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <collection property="options" column="id"
+                    ofType="xyz.lightseekers.maven_school.bean.Options"
+                    select="selectOptions">
+        </collection>
+    </resultMap>
+
+    <select id="selectById" resultMap="questionResult">
+        select * from db_school_web.briup_question where id = #{id}
+    </select>
+
+    <select id="selectOptions" resultType="xyz.lightseekers.maven_school.bean.Options">
+        select * from db_school_web.briup_options where question_id = #{id}
+    </select>
+
+</mapper>
