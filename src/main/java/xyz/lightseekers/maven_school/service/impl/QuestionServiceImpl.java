@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Options;
 import xyz.lightseekers.maven_school.bean.OptionsExample;
 import xyz.lightseekers.maven_school.bean.Question;
+import xyz.lightseekers.maven_school.bean.QuestionExample;
 import xyz.lightseekers.maven_school.bean.ex.QuestionEX;
 import xyz.lightseekers.maven_school.mapper.OptionsMapper;
 import xyz.lightseekers.maven_school.mapper.QuestionMapper;
 import xyz.lightseekers.maven_school.mapper.ex.QuestionEXMapper;
 import xyz.lightseekers.maven_school.service.IQuestionService;
-import xyz.lightseekers.maven_school.util.DaoUtil;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * @Modified User:
  */
 @Service
-public class QuestionService implements IQuestionService {
+public class QuestionServiceImpl implements IQuestionService {
 
     @Autowired
     private QuestionEXMapper questionEXMapper;
@@ -92,7 +92,7 @@ public class QuestionService implements IQuestionService {
      * @throws RuntimeException
      */
     @Override
-    public void insertQuestion(Question question, List<Options> list) throws RuntimeException {
+    public void insertQuestion(Question question,List<Options> list) throws RuntimeException {
         questionMapper.insert(question);
         for (Options options:list){
             options.setQuestionId(question.getId());
