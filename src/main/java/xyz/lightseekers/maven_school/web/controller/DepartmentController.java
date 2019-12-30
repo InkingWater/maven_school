@@ -31,6 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/selectBy")
+    @ApiOperation("关键字搜索")
     public Message selectBy(String key,String word)
     {
         List<DepartmentEX> list = departmentService.finder(key,word);
@@ -38,6 +39,7 @@ public class DepartmentController {
     }
 
     @PostMapping("/add")
+    @ApiOperation("添加信息")
     public Message add(Department department)
     {
          departmentService.saveOrUpdate(department);
@@ -53,5 +55,19 @@ public class DepartmentController {
         return MessageUtil.success();
     }
 
+    @PostMapping("update")
+    @ApiOperation("更新")
+    public Message update(Department department)
+    {
 
+        departmentService.saveOrUpdate(department);
+        return  MessageUtil.success();
+    }
+
+    @ApiOperation("批量删除")
+    @GetMapping("/deleteMany")
+    public Message deleteMany(int id[])
+    {
+        return MessageUtil.success(departmentService.deleteMore(id));
+    }
 }

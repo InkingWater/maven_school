@@ -11,5 +11,6 @@ public interface IDepartmentService {
     List<DepartmentEX> finder(String key,String word) throws RuntimeException;
     void saveOrUpdate(Department department) throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
+    String deleteMore(int id[]) throws RuntimeException;
 
 }

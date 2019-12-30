@@ -9,7 +9,7 @@
     </resultMap>
     
     <select id="findAll" resultMap="abn">
-        select * from briup_department
+        select name,description  from briup_department
     </select>
 
     <select id="selectName" resultMap="abn">
@@ -24,7 +24,7 @@
          select * from briup_dapartment where name like #{word} or dep like #{word}
     </select>
 
-    <select id="selectRegion" resultType="xyz.lightseekers.maven_school.bean.Region">
-        select * from briup_region where id = #{id}
-    </select>
+   <!-- <select id="selectRegion" resultType="xyz.lightseekers.maven_school.bean.Region">
+        select *  from briup_region where id = #{id}
+    </select>-->
 </mapper>

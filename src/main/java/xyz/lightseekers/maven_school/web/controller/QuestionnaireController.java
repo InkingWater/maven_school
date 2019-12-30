@@ -4,8 +4,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import xyz.lightseekers.maven_school.bean.Questionnaire;
 import xyz.lightseekers.maven_school.service.IQuestionnaireService;
 import xyz.lightseekers.maven_school.util.Message;
 import xyz.lightseekers.maven_school.util.MessageUtil;
@@ -30,6 +32,20 @@ public class QuestionnaireController {
         return MessageUtil.success(questionnaireService.search(word));
     }
 
-
+    @ApiOperation("查询问卷")
+    @GetMapping("/findAQuestionnaire")
+    public Message findAQuestionnaire(int id){
+        return MessageUtil.success(questionnaireService.findAQuestionnaire(id));
+    }
+    @ApiOperation("添加问卷")
+    @PostMapping("/add")
+    public Message add(Questionnaire questionnaire,int ids[]){
+        return MessageUtil.success(questionnaireService.addOrUpdate(questionnaire, ids));
+    }
+    @ApiOperation("修改问卷")
+    @PostMapping("/update")
+    public Message update(Questionnaire questionnaire,int ids[]){
+        return MessageUtil.success(questionnaireService.addOrUpdate(questionnaire, ids));
+    }
 
 }

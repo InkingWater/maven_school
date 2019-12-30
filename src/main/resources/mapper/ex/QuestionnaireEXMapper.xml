@@ -2,8 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.lightseekers.maven_school.mapper.ex.QuestionnaireEXMapper">
+    <resultMap id="qnM" type="xyz.lightseekers.maven_school.bean.ex.QuestionnaireEX">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="date" property="date"/>
+        <collection property="questionEXs" ofType="xyz.lightseekers.maven_school.bean.ex.QuestionEX" select="seleteQuestion" column="id"/>
+    </resultMap>
+
+    <resultMap id="qM" type="xyz.lightseekers.maven_school.bean.ex.QuestionEX">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="type" property="type"/>
+        <collection property="options" column="id" ofType="xyz.lightseekers.maven_school.bean.Options" select="seleteOptions"/>
+    </resultMap>
+
     <select id="search" resultType="xyz.lightseekers.maven_school.bean.Questionnaire">
         select * from briup_questionnaire where name like #{word}
     </select>
+    
+    <select id="findAQuestionnaire" resultMap="qnM">
+        select * from briup_questionnaire where id =#{id}
+    </select>
+    
+    <select id="seleteQuestion" resultMap="qM">
+        select * from briup_question where id in (select question_id from briup_qqn where questionnaire_id =#{id})
+    </select>
+
+    <select id="seleteOptions" resultType="xyz.lightseekers.maven_school.bean.Options" >
+        select * from briup_options where question_id = #{id}
+    </select>
+
+    <insert id="insert">
+        <selectKey keyProperty="id" keyColumn="id" order="AFTER" resultType="int">
+            select LAST_INSERT_ID()
+        </selectKey>
+            insert into briup_questionnaire values(0,#{name},#{description},#{date})
+    </insert>
+
+    <insert id="insertIntoQqn">
+        insert into briup_qqn values(0,#{qid},#{qnid})
+    </insert>
+
+
+
+
+    <delete id="deletes">
+        delete from briup_survey where questionnaire_id = #{id}
+    </delete>
 
 </mapper>

@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Department;
 import xyz.lightseekers.maven_school.bean.ex.DepartmentEX;
 import xyz.lightseekers.maven_school.mapper.DepartmentMapper;
+import xyz.lightseekers.maven_school.mapper.SurveyMapper;
 import xyz.lightseekers.maven_school.mapper.ex.DepartmentEXMapper;
 import xyz.lightseekers.maven_school.service.IDepartmentService;
+import xyz.lightseekers.maven_school.util.DaoUtil;
 
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class DepartmentServiceImpl implements IDepartmentService {
     private DepartmentMapper departmentMapper;
     @Autowired
     private DepartmentEXMapper departmentEXMapper;
+    @Autowired
+    private SurveyMapper surveyMapper;
 
     @Override
     public List<DepartmentEX> findAllDepartmentEX() throws RuntimeException {
@@ -63,6 +67,14 @@ public class DepartmentServiceImpl implements IDepartmentService {
     @Override
     public void deleteById(int id) throws RuntimeException {
         departmentMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public String deleteMore(int[] id) throws RuntimeException {
+        for (int i=0;i<id.length;i++){
+            deleteById(id[i]);
+        }
+        return DaoUtil.messageString(id.length,DaoUtil.DELETE);
     }
 }
 
