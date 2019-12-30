@@ -20,6 +20,7 @@ public class QuestionnaireController {
     @Autowired
     private IQuestionnaireService questionnaireService;
 
+
     @ApiOperation("查询所有问卷")
     @GetMapping("/findAll")
     public Message findAll(){
@@ -52,7 +53,7 @@ public class QuestionnaireController {
     @GetMapping("/del")
     public Message del(int id)
     {
-        // questionnaireService.deleteS(id);
+       // questionnaireService.deleteS(id);
         questionnaireService.deleteByid(id);
         return MessageUtil.success();
     }
@@ -64,5 +65,7 @@ public class QuestionnaireController {
         questionnaireService.deleteM(id);
         return MessageUtil.success();
     }
+
+
 
 }
