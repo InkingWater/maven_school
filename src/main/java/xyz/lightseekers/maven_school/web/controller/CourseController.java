@@ -19,7 +19,9 @@ import java.util.List;
 @Api(description = "课程管理")
 public class CourseController {
 
-
+    /**
+     * 获取Course的service
+     */
     @Autowired
     private ICourseServiceImpl iCourseService;
 
