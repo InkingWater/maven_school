@@ -47,4 +47,8 @@
 
 
 
+    <delete id="deletes">
+        delete from briup_survey where questionnaire_id = #{id}
+    </delete>
+
 </mapper>
