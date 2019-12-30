@@ -20,30 +20,4 @@
         select * from db_school_web.briup_options where question_id = #{id}
     </select>
 
-
-    <insert id="insertQuestion" parameterType="xyz.lightseekers.maven_school.bean.ex.QuestionEX">
-        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select LAST_INSERT_ID()
-        </selectKey>
-        insert briup_question values (#{id},#{name },#{id})
-    </insert>
-
-    <update id="updateQuestion" parameterType="xyz.lightseekers.maven_school.bean.ex.QuestionEX">
-        <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-            select LAST_INSERT_ID()
-        </selectKey>
-        update briup_question
-        set name = #{name,jdbcType=VARCHAR},
-        type = #{type,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-
-    <select id="findAll" resultMap="questionResult">
-        select * from briup_question
-    </select>
-
-    <select id="selectByName" resultMap="questionResult">
-        select * from briup_course where name like #{con}
-    </select>
-
 </mapper>

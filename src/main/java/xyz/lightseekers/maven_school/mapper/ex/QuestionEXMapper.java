@@ -16,11 +16,4 @@ import java.util.List;
 public interface QuestionEXMapper {
     QuestionEX selectById(int id) throws RuntimeException;
 
-    int insertQuestion(QuestionEX questionEX) throws RuntimeException;
-
-    int updateQuestion(QuestionEX questionEX) throws RuntimeException;
-
-    List<QuestionEX> findAll() throws RuntimeException;
-
-    List<QuestionEX> selectByName(String name) throws RuntimeException;
 }
