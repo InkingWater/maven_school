@@ -37,7 +37,7 @@ public class ISurveyQServiceImpl implements ISurveyQService {
     }
 
     @Override
-    public void startOrStop(int id) throws RuntimeException {
+    public Integer startOrStop(int id) throws RuntimeException {
         //先确定改哪个值
         Survey survey = surveyMapper.selectByPrimaryKey(id);
         if ("待开启".equals(survey.getStatus())) {
@@ -46,10 +46,13 @@ public class ISurveyQServiceImpl implements ISurveyQService {
             survey.setCode(s);
             survey.setStatus("开启");
             surveyMapper.updateByPrimaryKey(survey);
+            return surveyMapper.selectByPrimaryKey(id).getCode();
         } else if ("开启".equals(survey.getStatus())) {
             survey.setStatus("待审核");
             surveyMapper.updateByPrimaryKey(survey);
+            return null;
         }
+        return null;
     }
     //默认按照问卷查找
     @Override

@@ -36,8 +36,7 @@ public class MonitorController {
     @ApiOperation(value = "开启或者关闭")
     @ApiImplicitParam(name = "id",value = "修改的课调ID",paramType = "query",dataType = "int",required = true)
     public Message start(int id){
-        surveyQService.startOrStop(id);
-        return MessageUtil.success(DaoUtil.UPDATE);
+        return MessageUtil.success(surveyQService.startOrStop(id));
     }
 
     @GetMapping("/searchByName")

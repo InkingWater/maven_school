@@ -7,7 +7,7 @@ import java.util.List;
 public interface ISurveyQService {
     SurveyEXQ selectById(int id) throws RuntimeException;
     List<SurveyEXQ> selectAll() throws RuntimeException;
-    void startOrStop(int id)throws RuntimeException;
+    Integer startOrStop(int id)throws RuntimeException;
     List<SurveyEXQ> searchByName(String word) throws RuntimeException;
 
 }
