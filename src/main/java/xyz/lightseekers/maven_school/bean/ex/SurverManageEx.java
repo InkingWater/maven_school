@@ -1,19 +1,18 @@
-package xyz.lightseekers.maven_school.bean;
+package xyz.lightseekers.maven_school.bean.ex;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
+import xyz.lightseekers.maven_school.bean.Clazz;
+import xyz.lightseekers.maven_school.bean.Course;
+import xyz.lightseekers.maven_school.bean.Department;
+import xyz.lightseekers.maven_school.bean.Teacher;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@ApiModel
-public class Survey implements Serializable {
+public class SurverManageEx {
     private Integer id;
 
     private String status;
-    @ApiParam(hidden = true)
     private Integer code;
-    @ApiParam(hidden = true)
     private Date surveyday;
 
     private Integer departmentId;
@@ -25,10 +24,17 @@ public class Survey implements Serializable {
     private Integer userId;
 
     private Integer questionnaireId;
-    @ApiParam(hidden = true)
     private Double average;
 
-    private static final long serialVersionUID = 1L;
+    private Department department;
+
+    private Clazz clazz;
+
+    private Course course;
+
+    private QuestionnaireEX questionnaireEX;
+
+    private Teacher teacher;
 
     public Integer getId() {
         return id;
@@ -43,7 +49,7 @@ public class Survey implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Integer getCode() {
@@ -110,24 +116,43 @@ public class Survey implements Serializable {
         this.average = average;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", code=").append(code);
-        sb.append(", surveyday=").append(surveyday);
-        sb.append(", departmentId=").append(departmentId);
-        sb.append(", courseId=").append(courseId);
-        sb.append(", clazzId=").append(clazzId);
-        sb.append(", userId=").append(userId);
-        sb.append(", questionnaireId=").append(questionnaireId);
-        sb.append(", average=").append(average);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Clazz getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(Clazz clazz) {
+        this.clazz = clazz;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public QuestionnaireEX getQuestionnaireEX() {
+        return questionnaireEX;
+    }
+
+    public void setQuestionnaireEX(QuestionnaireEX questionnaireEX) {
+        this.questionnaireEX = questionnaireEX;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

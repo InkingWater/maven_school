@@ -8,7 +8,10 @@ import xyz.lightseekers.maven_school.bean.QqnExample;
 import xyz.lightseekers.maven_school.bean.Questionnaire;
 import xyz.lightseekers.maven_school.bean.QuestionnaireExample;
 import xyz.lightseekers.maven_school.bean.ex.QuestionnaireEX;
+
+
 import xyz.lightseekers.maven_school.mapper.QqnMapper;
+
 import xyz.lightseekers.maven_school.mapper.QqnMapper;
 import xyz.lightseekers.maven_school.mapper.QuestionnaireMapper;
 import xyz.lightseekers.maven_school.mapper.ex.QuestionnaireEXMapper;
@@ -50,6 +53,10 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     public QuestionnaireEX findAQuestionnaire(int id) throws RuntimeException {
         return questionnaireEXMapper.findAQuestionnaire(id);
     }
+
+
+
+
 
     @Override
     public String addOrUpdate(Questionnaire questionnaire, int ids[]) throws RuntimeException {
@@ -98,6 +105,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
         QqnExample qqn=new QqnExample();
         qqn.createCriteria().andQuestionnaireIdEqualTo(id);
         qqnMapper.deleteByExample(qqn);
+
     }
 
 

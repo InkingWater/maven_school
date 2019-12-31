@@ -20,5 +20,6 @@ public interface QuestionnaireEXMapper {
     QuestionnaireEX findAQuestionnaire(int id) throws RuntimeException;
     void update(Questionnaire questionnaire) throws RuntimeException;
     void insertIntoQqn(int qid,int qnid) throws RuntimeException;
+
     void deletes(int id) throws RuntimeException;
 }
