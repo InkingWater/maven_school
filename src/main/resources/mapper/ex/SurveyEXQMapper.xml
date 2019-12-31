@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.SurveyEXQMapper">
+    <resultMap id="surveyResult"  type="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ">
+        <id column="id" property="id"/>
+        <result column="status" property="status"/>
+        <result column="code" property="code"/>
+        <result column="surveyday" property="surveyday"/>
+        <association property="department" column="department_id" select="selectDepartment"/>
+        <association property="course" column="course_id" select="selectCourse"/>
+        <association property="clazz" column="clazz_id" select="selectClazz"/>
+        <association property="teacher" column="user_id" select="selectTeacher"/>
+        <association property="questionnaire" column="questionnaire_id" select="selectQuestionnaire"/>
+    </resultMap>
+    <select id="selectById" resultMap="surveyResult">
+        select * from briup_survey where id = #{id}
+    </select>
+    <select id="selectDepartment" resultType="xyz.lightseekers.maven_school.bean.Department">
+        select * from briup_department where id =#{department_id}
+    </select>
+    <select id="selectCourse" resultType="xyz.lightseekers.maven_school.bean.Course">
+        select * from briup_department where id =#{course_id}
+    </select>
+    <select id="selectClazz" resultType="xyz.lightseekers.maven_school.bean.Clazz">
+        select * from briup_clazz where id =#{clazz_id}
+    </select>
+    <select id="selectTeacher" resultType="xyz.lightseekers.maven_school.bean.Teacher">
+        select * from briup_teacher where id =#{user_id}
+    </select>
+    <select id="selectQuestionnaire" resultType="xyz.lightseekers.maven_school.bean.Questionnaire">
+        select * from briup_questionnaire where id = #{briup_questionnaire}
+    </select>
+    <select id="selectAll" resultMap="surveyResult">
+        select * from briup_survey
+    </select>
+
+
+    <select id="searchWord" resultMap="surveyResult">
+        select * from briup_survey where name like #{word}
+    </select>
+    <select id="searchByQuestionnaireId" resultMap="surveyResult">
+        select * from briup_survey where questionnaire_id = #{id}
+    </select>
+</mapper>
