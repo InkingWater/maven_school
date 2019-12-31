@@ -22,3 +22,4 @@ public interface QuestionEXMapper {
     //添加数据
     QuestionEX insertOne(QuestionEX questionEX)throws RuntimeException;
 }
+
