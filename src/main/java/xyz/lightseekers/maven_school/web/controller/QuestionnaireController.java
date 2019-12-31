@@ -40,7 +40,7 @@ public class QuestionnaireController {
     }
     @ApiOperation("添加问卷")
     @PostMapping("/add")
-    public Message add(Questionnaire questionnaire,int ids[]){
+    public Message add(Questionnaire questionnaire, int ids[]){
         return MessageUtil.success(questionnaireService.addOrUpdate(questionnaire, ids));
     }
     @ApiOperation("修改问卷")

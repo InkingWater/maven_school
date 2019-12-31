@@ -1,7 +1,6 @@
 package xyz.lightseekers.maven_school.mapper.ex;
 
 import org.springframework.stereotype.Repository;
-import xyz.lightseekers.maven_school.bean.Question;
 import xyz.lightseekers.maven_school.bean.ex.QuestionEX;
 
 import java.util.List;

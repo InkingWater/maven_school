@@ -10,7 +10,6 @@ import xyz.lightseekers.maven_school.mapper.OptionsMapper;
 import xyz.lightseekers.maven_school.mapper.QuestionMapper;
 import xyz.lightseekers.maven_school.mapper.ex.QuestionEXMapper;
 import xyz.lightseekers.maven_school.service.IQuestionService;
-import xyz.lightseekers.maven_school.util.DaoUtil;
 
 import java.util.List;
 

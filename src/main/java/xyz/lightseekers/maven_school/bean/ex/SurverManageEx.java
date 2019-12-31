@@ -1,6 +1,5 @@
 package xyz.lightseekers.maven_school.bean.ex;
 
-import io.swagger.annotations.ApiParam;
 import xyz.lightseekers.maven_school.bean.Clazz;
 import xyz.lightseekers.maven_school.bean.Course;
 import xyz.lightseekers.maven_school.bean.Department;
