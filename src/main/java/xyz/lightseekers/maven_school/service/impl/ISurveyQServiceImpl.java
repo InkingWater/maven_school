@@ -12,6 +12,7 @@ import xyz.lightseekers.maven_school.mapper.ex.SurveyEXQMapper;
 import xyz.lightseekers.maven_school.service.ISurveyQService;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -39,10 +40,11 @@ public class ISurveyQServiceImpl implements ISurveyQService {
     @Override
     public Integer startOrStop(int id) throws RuntimeException {
         //先确定改哪个值
+        Calendar calendar = Calendar.getInstance();
         Survey survey = surveyMapper.selectByPrimaryKey(id);
         if ("待开启".equals(survey.getStatus())) {
             Random random = new Random();
-            int s = random.nextInt(9999) % (9000) + 1000;
+            int s = (calendar.get(Calendar.MILLISECOND) * random.nextInt(10) + random.nextInt(9999)) % 9000 + 1000;
             survey.setCode(s);
             survey.setStatus("开启");
             surveyMapper.updateByPrimaryKey(survey);
@@ -54,16 +56,16 @@ public class ISurveyQServiceImpl implements ISurveyQService {
         }
         return null;
     }
+
     //默认按照问卷查找
     @Override
     public List<SurveyEXQ> searchByName(String word) throws RuntimeException {
-        if (word==null||"".equals(word)){
+        if (word == null || "".equals(word)) {
             return surveyEXQMapper.selectAll();
-        }
-        else {
-            word = "%" + word +"%";
+        } else {
+            word = "%" + word + "%";
             //先在Questionnaire中模糊查询，将结果存到List集合中，使用andNameLike方法
-            QuestionnaireExample questionnaireExample=new QuestionnaireExample();
+            QuestionnaireExample questionnaireExample = new QuestionnaireExample();
             questionnaireExample.createCriteria().andNameLike(word);
             List<Questionnaire> questionnaires = questionnaireMapper.selectByExample(questionnaireExample);
             //然后在survey表中通过获取查询到的Question_Id来进行查询survey,然后存到List集合中
