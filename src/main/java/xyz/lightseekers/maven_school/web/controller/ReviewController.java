@@ -71,7 +71,7 @@ public class ReviewController {
         iReviewService.updateAnswer(word,id);
         return MessageUtil.success("修改成功");
     }
-
+git
     @PostMapping("/Review")
     @ApiOperation(value = "审核通过id返回结果")
     public Message Review(int id,String word){
