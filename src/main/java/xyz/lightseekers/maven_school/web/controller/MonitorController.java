@@ -53,4 +53,11 @@ public class MonitorController {
         List<SurveyEXQ> list =surveyQService.selectAll();
         return MessageUtil.success(list);
     }
+
+    @GetMapping("/selectAllByStatus")
+    @ApiOperation(value = "查询需要修改状态的课调信息")
+    public Message selectAllByStatus(){
+        List<SurveyEXQ> list =surveyQService.selectAllByStatus();
+        return MessageUtil.success(list);
+    }
 }

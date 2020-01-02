@@ -9,5 +9,6 @@ public interface ISurveyQService {
     List<SurveyEXQ> selectAll() throws RuntimeException;
     Integer startOrStop(int id)throws RuntimeException;
     List<SurveyEXQ> searchByName(String word) throws RuntimeException;
+    List<SurveyEXQ> selectAllByStatus() throws RuntimeException;
 
 }
