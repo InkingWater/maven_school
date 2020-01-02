@@ -11,13 +11,17 @@ public interface SurveyEXMMapper {
 
     List<SurveyEXM> selectAll() throws RuntimeException;
 
-    SurveyEXM  selectByTeacherID(int id) throws RuntimeException;
+    List<SurveyEXM>  selectByTeacherID(int id) throws RuntimeException;
 
-    SurveyEXM  selectByCourseID(int id) throws RuntimeException;
+    List<SurveyEXM>  selectByCourseID(int id) throws RuntimeException;
 
-    SurveyEXM  selectByClazzID(int id) throws RuntimeException;
+    List<SurveyEXM>  selectByClazzID(int id) throws RuntimeException;
 
-    SurveyEXM  selectByDepartmentID(int id) throws RuntimeException;
+    List<SurveyEXM>  selectByDepartmentID(int id) throws RuntimeException;
+
+    SurveyEXM selectByIdStatus(int id) throws RuntimeException;
+
+    void uodateStatus(String word) throws RuntimeException;
 }
 
 

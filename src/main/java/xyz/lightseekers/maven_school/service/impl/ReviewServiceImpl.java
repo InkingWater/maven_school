@@ -75,15 +75,11 @@ public class ReviewServiceImpl implements IReviewService {
         List<SurveyEXM> list = new ArrayList<>();
         if (keyWord == null || "".equals(keyWord)) {
                return selectAll();
-        }else {}
-//        List<Department> departments = selectByDepartmenName(keyWord);
-//        List<Clazz> clazzes = selectByClazzName(keyWord);
-        List<Course> courses = selectByCourseName(keyWord);
-        List<Teacher> teachers =selectByTeacherName(keyWord);
-
-
-
-
+        }else {
+            List<Department> departments = selectByDepartmenName(keyWord);
+            List<Clazz> clazzes = selectByClazzName(keyWord);
+            List<Course> courses = selectByCourseName(keyWord);
+            List<Teacher> teachers = selectByTeacherName(keyWord);
 //        for (Department department : departments) {
 //            depqrtmentIDs.add(department.getId());
 //        }
@@ -92,27 +88,35 @@ public class ReviewServiceImpl implements IReviewService {
 //            clazzIDs.add(clazz.getId());
 //        }
 //
-        for (Course cours : courses) {
-            SurveyEXM  surveyEXM = surveyEXMMapper.selectByCourseID(cours.getId());
-            System.out.println(cours.getId());
-            System.out.println(surveyEXM);
+            for (Course cours : courses) {                          //将根据课程id查询到的surveyEX对象添加到list集合中
+                List<SurveyEXM> surveyEXMS = surveyEXMMapper.selectByCourseID(cours.getId());
+                System.out.println(cours.getId());
+                //       System.out.println();
 
-            list.add(surveyEXM);
-        }
+                list.addAll(surveyEXMS);
+            }
 
-       // SurveyEXM surveyEXM ;
-        for (Teacher teacher : teachers) {
-          SurveyEXM  surveyEXM = surveyEXMMapper.selectByTeacherID(teacher.getId());
-          System.out.println(teacher.getId());
-          System.out.println(surveyEXM);
+            // SurveyEXM surveyEXM ;
+            for (Teacher teacher : teachers) {                       //将根据教师id查询到的surveyEX对象添加到list集合中
+                List<SurveyEXM> surveyEXMS = surveyEXMMapper.selectByTeacherID(teacher.getId());
+                System.out.println(teacher.getId());
+                //  System.out.println(surveyEXM);
+                list.addAll(surveyEXMS);
+                System.out.println(teacher.getId());
+                //  teacherIDs.add(teacher.getId());
+            }
 
-            list.add(surveyEXM);
-            System.out.println(teacher.getId());
-          //  teacherIDs.add(teacher.getId());
-        }
+            for (Clazz clazz : clazzes) {                          //将根据班级id查询到的surveyEX对象添加到list集合中
+                List<SurveyEXM> surveyEXMS = surveyEXMMapper.selectByClazzID(clazz.getId());
+                list.addAll(surveyEXMS);
+            }
 
- //       System.out.println(teacherIDs);
 
+            for (Department department : departments) {              //将根据年级id查询到的surveyEX对象添加到list集合中
+                List<SurveyEXM> surveyEXMS = surveyEXMMapper.selectByDepartmentID(department.getId());
+                list.addAll(surveyEXMS);
+            }
+            //       System.out.println(teacherIDs);
 
 
 //        List<SurveyEXM> listByteacher = null;
@@ -123,29 +127,28 @@ public class ReviewServiceImpl implements IReviewService {
 //
 //        List<SurveyEXM> listByClazz = null;
 
-
-
 //        for (Integer teacherID : teacherIDs) {
 //
 //        }
 
-//        for (SurveyEXM surveyEXM : list) {
-//            Teacher teacher = teacherMapper.selectByPrimaryKey(surveyEXM.getUserId());
-//            surveyEXM.setTeacherName(teacher.getName());
-//
-//            Course course = courseMapper.selectByPrimaryKey(surveyEXM.getCourseId());
-//            surveyEXM.setCourseName(course.getName());
-//
-//            Department department = departmentMapper.selectByPrimaryKey(surveyEXM.getDepartmentId());
-//            surveyEXM.setDepartmentName(department.getName());
-//
-//            Clazz clazz = clazzMapper.selectByPrimaryKey(surveyEXM.getClazzId());
-//            surveyEXM.setClazzName(clazz.getName());
-//
-//        }
+            for (SurveyEXM surveyEXM : list) {
+                Teacher teacher = teacherMapper.selectByPrimaryKey(surveyEXM.getUserId());
+                surveyEXM.setTeacherName(teacher.getName());
+
+                Course course = courseMapper.selectByPrimaryKey(surveyEXM.getCourseId());
+                surveyEXM.setCourseName(course.getName());
+
+                Department department = departmentMapper.selectByPrimaryKey(surveyEXM.getDepartmentId());
+                surveyEXM.setDepartmentName(department.getName());
+
+                Clazz clazz = clazzMapper.selectByPrimaryKey(surveyEXM.getClazzId());
+                surveyEXM.setClazzName(clazz.getName());
+
+            }
 
 
-        return list;
+            return list;
+        }
     }
 
     @Override
@@ -173,10 +176,6 @@ public class ReviewServiceImpl implements IReviewService {
         return courses;
     }
 
-//    @Override
-//    public List<SurveyEXM> selectByQuestonnaire(String Name) throws RuntimeException {
-//        return null;
-//    }
 
     @Override
     public List<Teacher> selectByTeacherName(String name) throws RuntimeException {
@@ -204,6 +203,20 @@ public class ReviewServiceImpl implements IReviewService {
     public void updateAnswer(String word, int id) throws RuntimeException {
         answerEXMapper.updateAnswer(word,id);
 
+    }
+
+    @Override
+    public String updateStatus(int id, String word) throws RuntimeException {
+        SurveyEXM surveyEXM = surveyEXMMapper.selectByIdStatus(id);
+
+        if (surveyEXM.getStatus() == "审核"){
+            return "该课调以审核完毕";
+        }
+
+        else {
+            surveyEXMMapper.uodateStatus(word);
+            return "已修改审核信息";
+        }
     }
 }
 

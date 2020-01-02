@@ -36,8 +36,16 @@
         select * from briup_survey where clazz_id = #{id}
     </select>
 
+    <select id="selectByIdStatus" resultMap="BaseResultMap">
+        select * from  briup_survey where id = #{id}
+    </select>
+
     <select id="selectByDepartmentID" resultMap="BaseResultMap">
         select * from briup_survey where department_id = #{id}
     </select>
+
+    <update id="uodateStatus">
+        update briup_survey set status = #{word}
+    </update>
 
 </mapper>

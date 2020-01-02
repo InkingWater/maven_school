@@ -35,10 +35,9 @@ public class ReviewController {
     }
 
     @GetMapping("/selectByCon")
-    @ApiOperation(value = "条件查找()")
+    @ApiOperation(value = "条件查找(教师姓名，班级姓名，年级名称，课程名称)")
     public Message selectByCon(String keyWord){
         List<SurveyEXM> surveyEXMS = iReviewService.selectByCon(keyWord);
-
         return  MessageUtil.success(surveyEXMS);
     }
 
@@ -73,4 +72,13 @@ public class ReviewController {
         iReviewService.updateAnswer(word,id);
         return MessageUtil.success("修改成功");
     }
+
+    @PostMapping("/Review")
+    @ApiOperation(value = "审核通过id返回结果")
+    public Message Review(int id,String word){
+        iReviewService.updateStatus(id,word);
+        return MessageUtil.success("审核完毕");
+    }
+
+
 }

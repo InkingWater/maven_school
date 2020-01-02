@@ -38,6 +38,6 @@ public interface IReviewService {
 
     void updateAnswer(String word,int id) throws RuntimeException;
 
-
+    String  updateStatus(int id, String word) throws RuntimeException;
 
  }
