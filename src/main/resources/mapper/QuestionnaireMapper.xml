@@ -5,7 +5,6 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="date" jdbcType="TIMESTAMP" property="date" />
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="xyz.lightseekers.maven_school.bean.Questionnaire">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
@@ -69,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, date,description
+    id, name, date
   </sql>
   <sql id="Blob_Column_List">
     description

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xyz.lightseekers.maven_school.bean.Survey;
 import xyz.lightseekers.maven_school.bean.Teacher;
 import xyz.lightseekers.maven_school.bean.ex.AnswerEX;
 import xyz.lightseekers.maven_school.bean.ex.SurveyEXM;

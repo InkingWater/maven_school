@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.SurverManageExMapper">
+
+    <resultMap id="SurverMap" type="xyz.lightseekers.maven_school.bean.ex.SurverManageEx">
+        <id column="id" property="id"/>
+        <result column="status" property="status"/>
+        <result column="surverday" property="surverday"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <result column="course_id" jdbcType="INTEGER" property="courseId" />
+        <result column="clazz_id" jdbcType="INTEGER" property="clazzId" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="questionnaire_id" jdbcType="INTEGER" property="questionnaireId" />
+        <result column="average" jdbcType="DOUBLE" property="average" />
+        <association property="department" column="department_id" select="selectDepartment"/>
+        <association property="course" column="course_id" select="selectCourse"/>
+        <association property="clazz" column="clazz_id" select="selectClazz"/>
+        <association property="teacher" column="user_id" select="selectTeacher"/>
+        <association property="questionnaireEX" column="questionnaire_id" select="selectQuestionnaire"/>
+    </resultMap>
+    <resultMap id="qnM" type="xyz.lightseekers.maven_school.bean.ex.QuestionnaireEX">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="date" property="date"/>
+        <collection property="questionEXs" ofType="xyz.lightseekers.maven_school.bean.ex.QuestionEX" select="seleteQuestion" column="id"/>
+    </resultMap>
+
+    <resultMap id="qM" type="xyz.lightseekers.maven_school.bean.ex.QuestionEX">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="type" property="type"/>
+        <collection property="options" column="id" ofType="xyz.lightseekers.maven_school.bean.Options" select="seleteOptions"/>
+    </resultMap>
+    <resultMap id="ClazzBaseResultMap" type="xyz.lightseekers.maven_school.bean.Clazz">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="serve_number" jdbcType="INTEGER" property="serveNumber" />
+        <result column="student_number" jdbcType="INTEGER" property="studentNumber" />
+        <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+        <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+    </resultMap>
+    <resultMap extends="ClazzBaseResultMap" id="ResultMapWithBLOBs" type="xyz.lightseekers.maven_school.bean.Clazz">
+        <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    </resultMap>
+    <resultMap id="OptionsBaseResultMap" type="xyz.lightseekers.maven_school.bean.Options">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="label" jdbcType="VARCHAR" property="label" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="score" jdbcType="INTEGER" property="score" />
+        <result column="question_id" jdbcType="INTEGER" property="questionId" />
+    </resultMap>
+    <resultMap id="DepartmentBaseResultMap" type="xyz.lightseekers.maven_school.bean.Department">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="region_id" jdbcType="INTEGER" property="regionId" />
+        <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    </resultMap>
+    <select id="selectDepartment" resultMap="DepartmentBaseResultMap">
+        select * from briup_department where id = #{department_id}
+    </select>
+    <select id="selectCourse" resultType="xyz.lightseekers.maven_school.bean.Course">
+        select * from briup_course where id = #{course_id}
+    </select>
+    <select id="selectClazz" resultMap="ClazzBaseResultMap">
+        select * from briup_clazz where id = #{clazz_id}
+    </select>
+    <select id="selectTeacher" resultType="xyz.lightseekers.maven_school.bean.Teacher">
+        select * from briup_teacher where id = #{user_id}
+    </select>
+
+    <select id="selectQuestionnaire" resultMap="qnM">
+        select * from briup_questionnaire where id =#{questionnaire_id}
+    </select>
+
+    <select id="seleteQuestion" resultMap="qM">
+        select * from briup_question where id in (select question_id from briup_qqn where questionnaire_id =#{id})
+    </select>
+
+    <select id="seleteOptions" resultMap="OptionsBaseResultMap" >
+        select * from briup_options where question_id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="SurverMap" >
+        select * from briup_survey
+    </select>
+
+    <select id="findASurverById" resultMap="SurverMap">
+        select * from briup_survey where id = #{id}
+    </select>
+
+    <select id="search" resultMap="SurverMap">
+        select s.id  ,s.status,s.code,s.surveyday,s.department_id,s.course_id,s.clazz_id,s.user_id,s.questionnaire_id,s.average,q.id qid,q.name qname,clazz.name clazzname,clazz.id clazzid,course.id courseid,
+        d.id did,d.name dname,t.id tid,t.name tname
+         from briup_survey s,briup_questionnaire q,briup_clazz clazz,briup_course course,briup_department d,briup_teacher t where (q.id =s.questionnaire_id and clazz.id=s.clazz_id and course.id=s.course_id and d.id=s.department_id and t.id=s.user_id) and ( course.name like #{word} or q.name like #{word} or d.name like #{word} or t.name like #{word} or clazz.name like #{word})
+
+    </select>
+
+
+</mapper>

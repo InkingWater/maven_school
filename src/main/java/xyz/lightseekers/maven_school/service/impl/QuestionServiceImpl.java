@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import xyz.lightseekers.maven_school.bean.Options;
 import xyz.lightseekers.maven_school.bean.OptionsExample;
 import xyz.lightseekers.maven_school.bean.Question;
-import xyz.lightseekers.maven_school.bean.QuestionExample;
 import xyz.lightseekers.maven_school.bean.ex.QuestionEX;
 import xyz.lightseekers.maven_school.mapper.OptionsMapper;
 import xyz.lightseekers.maven_school.mapper.QuestionMapper;

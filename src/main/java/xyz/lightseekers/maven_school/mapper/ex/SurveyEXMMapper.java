@@ -1,11 +1,11 @@
 package xyz.lightseekers.maven_school.mapper.ex;
 
-import xyz.lightseekers.maven_school.bean.Survey;
-import xyz.lightseekers.maven_school.bean.SurveyExample;
+import org.springframework.stereotype.Repository;
 import xyz.lightseekers.maven_school.bean.ex.SurveyEXM;
 
 import java.util.List;
 
+@Repository
 public interface SurveyEXMMapper {
 
 

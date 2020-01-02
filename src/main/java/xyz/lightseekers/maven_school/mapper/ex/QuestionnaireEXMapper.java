@@ -1,7 +1,6 @@
 package xyz.lightseekers.maven_school.mapper.ex;
 
 import org.springframework.stereotype.Repository;
-import xyz.lightseekers.maven_school.bean.Question;
 import xyz.lightseekers.maven_school.bean.Questionnaire;
 import xyz.lightseekers.maven_school.bean.ex.QuestionnaireEX;
 
@@ -20,5 +19,6 @@ public interface QuestionnaireEXMapper {
     QuestionnaireEX findAQuestionnaire(int id) throws RuntimeException;
     void update(Questionnaire questionnaire) throws RuntimeException;
     void insertIntoQqn(int qid,int qnid) throws RuntimeException;
+
     void deletes(int id) throws RuntimeException;
 }
