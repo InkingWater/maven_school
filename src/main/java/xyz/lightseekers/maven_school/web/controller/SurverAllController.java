@@ -60,6 +60,7 @@ public class SurverAllController {
 
 
         XSSFRow row2 = sheet.createRow(0);
+        sheet.addMergedRegion(new CellRangeAddress(0,0,0,7));
         row2.createCell(0).setCellValue("课调信息");
 
 
