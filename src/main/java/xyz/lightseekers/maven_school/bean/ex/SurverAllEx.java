@@ -1,14 +1,12 @@
 package xyz.lightseekers.maven_school.bean.ex;
 
-import xyz.lightseekers.maven_school.bean.Clazz;
-import xyz.lightseekers.maven_school.bean.Course;
-import xyz.lightseekers.maven_school.bean.Department;
-import xyz.lightseekers.maven_school.bean.Teacher;
+import xyz.lightseekers.maven_school.bean.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class SurverManageEx implements Serializable {
+public class SurverAllEx implements Serializable {
     private Integer id;
 
     private String status;
@@ -35,6 +33,16 @@ public class SurverManageEx implements Serializable {
     private QuestionnaireEX questionnaireEX;
 
     private Teacher teacher;
+
+    private List<Answer> answers;
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 
     public Integer getId() {
         return id;

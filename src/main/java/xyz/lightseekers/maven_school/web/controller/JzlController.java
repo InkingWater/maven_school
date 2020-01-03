@@ -26,11 +26,11 @@ import java.net.URLEncoder;
  * @Author: Light
  * @Date: 2020/1/3 9:12
  */
-@RestController
-@RequestMapping(value = "jzl")
+//@RestController
+//@RequestMapping(value = "jzl")
 public class JzlController {
 
-    @GetMapping("/download")
+//    @GetMapping("/download")
     public void download(HttpServletResponse response) throws Exception {
         this.salaryTemplate(response);
     }
