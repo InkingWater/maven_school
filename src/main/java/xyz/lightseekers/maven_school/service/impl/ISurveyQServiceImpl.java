@@ -76,4 +76,9 @@ public class ISurveyQServiceImpl implements ISurveyQService {
             return list;
         }
     }
+
+    @Override
+    public List<SurveyEXQ> selectAllByStatus() throws RuntimeException {
+        return surveyEXQMapper.selectAllByStatus();
+    }
 }

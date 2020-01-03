@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.lightseekers.maven_school.mapper.ex.ClazzEXQMapper">
+    <resultMap id="clazzResult" type="xyz.lightseekers.maven_school.bean.ex.ClazzEXQ">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="min" column="id" select="acquireMin"/>
+        <association property="average" column="id" select="acquireAverage"/>
+        <association property="recent" column="id" select="acquireRecent"/>
+        <collection property="list" column="id" ofType="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ"
+                    select="acquireSurvey"/>
+    </resultMap>
+    <resultMap id="clazzByDeIdResult" type="xyz.lightseekers.maven_school.bean.ex.ClazzEXQ">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="department_id" property="departmentId"/>
+        <association property="min" column="id" select="acquireMin"/>
+        <association property="average" column="id" select="acquireAverage"/>
+        <association property="recent" column="id" select="acquireRecent"/>
+        <collection property="list" column="id" ofType="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ"
+                    select="acquireSurvey"/>
+    </resultMap>
+    <resultMap id="clazzByNameResult" type="xyz.lightseekers.maven_school.bean.ex.ClazzEXQ">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="min" column="id" select="acquireMin"/>
+        <association property="average" column="id" select="acquireAverage"/>
+        <association property="recent" column="id" select="acquireRecent"/>
+        <collection property="list" column="id" ofType="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ"
+                    select="acquireSurvey"/>
+    </resultMap>
+    <resultMap id="clazzByIdResult" type="xyz.lightseekers.maven_school.bean.ex.ClazzEXQ">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <association property="min" column="id" select="acquireMin"/>
+        <association property="average" column="id" select="acquireAverage"/>
+        <association property="recent" column="id" select="acquireRecent"/>
+        <collection property="list" column="id" ofType="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ"
+                    select="acquireSurvey"/>
+    </resultMap>
+
+    <select id="selectClazz" resultMap="clazzResult">
+        select id,name from briup_clazz
+    </select>
+    <select id="selectClazzByDeId" resultMap="clazzByDeIdResult">
+        select id,name from briup_clazz where department_id = #{departmentId}
+    </select>
+    <select id="selectClazzByName" resultMap="clazzByNameResult">
+        select id,name from briup_clazz where name like #{name}
+    </select>
+    <select id="selectClazzById" resultMap="clazzByIdResult">
+        select id,name from briup_clazz where id =#{id}
+    </select>
+
+
+    <select id="acquireMin" resultType="double">
+        select MIN(average) as min from briup_survey where clazz_id =#{clazz_id}
+    </select>
+    <select id="acquireAverage" resultType="double">
+        select sum(average)/sum(1) as average from briup_survey where clazz_id = #{clazz_id}
+    </select>
+    <select id="acquireRecent" resultType="double">
+        select average from briup_survey where clazz_id = #{id} order by id desc LIMIT 1
+    </select>
+    <select id="acquireSurvey" resultType="xyz.lightseekers.maven_school.bean.ex.SurveyEXQ">
+        select * from briup_survey where status ='审核' and clazz_id = #{clazz_id}
+    </select>
+</mapper>

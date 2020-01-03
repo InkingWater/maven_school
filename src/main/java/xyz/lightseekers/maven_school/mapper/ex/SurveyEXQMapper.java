@@ -14,4 +14,5 @@ public interface SurveyEXQMapper {
     List<SurveyEXQ> selectAll() throws RuntimeException;
     List<SurveyEXQ> searchWord(String word) throws RuntimeException;
     List<SurveyEXQ> searchByQuestionnaireId(int id) throws RuntimeException;
+    List<SurveyEXQ> selectAllByStatus() throws RuntimeException;
 }

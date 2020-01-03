@@ -42,4 +42,7 @@
     <select id="searchByQuestionnaireId" resultMap="surveyResult">
         select * from briup_survey where questionnaire_id = #{id}
     </select>
+    <select id="selectAllByStatus" resultMap="surveyResult">
+        select * from briup_survey where status = '待开启' or status='开启'
+    </select>
 </mapper>
