@@ -2,7 +2,9 @@ package xyz.lightseekers.maven_school.web.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -47,7 +49,8 @@ public class SurverAllController {
     }
     @ApiOperation("下载")
     @GetMapping("/download")
-    public void download(HttpServletResponse response, int id) throws IOException {
+    public void download(HttpServletResponse response,int id) throws IOException {
+
 
         SurverAllEx surverAll= surverAllService.findASurverById(id);
 
@@ -70,7 +73,7 @@ public class SurverAllController {
         row.createCell(4).setCellValue("课程:");
         row.createCell(5).setCellValue(surverAll.getCourse().getName());
         row.createCell(6).setCellValue("平均分：");
-        row.createCell(7).setCellValue(surverAll.getCode());
+        row.createCell(7).setCellValue(surverAll.getAverage());
 
         List<Answer> answers = surverAll.getAnswers();
         for (int i=0;i<answers.size();i++){
@@ -85,10 +88,8 @@ public class SurverAllController {
 
 
         response.setHeader("content-Type", "application/vnd.ms-excel");
-        response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode("李四课调.xlsx", "utf-8"));
+        response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode(surverAll.getTeacher().getName()+"课调.xlsx", "utf-8"));
         sheets.write(response.getOutputStream());
-
-
 
     }
 }
